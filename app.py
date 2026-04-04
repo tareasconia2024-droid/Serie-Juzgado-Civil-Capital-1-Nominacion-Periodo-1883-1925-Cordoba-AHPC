@@ -36,7 +36,7 @@ def index():
     cur = conn.cursor()
     cur.execute("SELECT COUNT(*) as t FROM registros")
     total = cur.fetchone()['t']
-    cur.execute("SELECT MIN(anio) as mn, MAX(anio) as mx FROM registros WHERE anio IS NOT NULL")
+    cur.execute("SELECT MIN(anio) as mn, MAX(anio) as mx FROM registros WHERE anio IS NOT NULL AND anio >= 1883 AND anio <= 1925")
     rango = cur.fetchone()
     cur.execute("SELECT COUNT(DISTINCT causa) as t FROM registros WHERE causa IS NOT NULL AND causa != ''")
     causas = cur.fetchone()['t']
